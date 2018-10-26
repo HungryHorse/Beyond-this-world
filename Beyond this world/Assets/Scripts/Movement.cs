@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour
     public bool isGrounded;
     public float landDelay;
 
+    public bool onSink;
     bool ableToMove;
     float recoveryTime;
     Rigidbody2D rb;
@@ -29,8 +30,17 @@ public class Movement : MonoBehaviour
 
         Vector3 movement = new Vector3(x, 0, 0);
 
+        if (onSink)
+        {
+            rb.gravityScale = 0.05f;
+        }
+        else
+        {
+            rb.gravityScale = 1;
+        }
 
-        if (!isGrounded)
+
+        if(!isGrounded || onSink)
         {
             modSpeed /= 2.5f;
         }
@@ -62,5 +72,11 @@ public class Movement : MonoBehaviour
     public void ImposeRecoveryTime()
     {
         recoveryTime = landDelay;
+    }
+
+    public void setOnSink(bool change)
+    {
+        onSink = change;
+        rb.velocity = new Vector2(0,0);
     }
 }
