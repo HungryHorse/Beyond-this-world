@@ -20,6 +20,7 @@ public class isGrounded : MonoBehaviour {
         {
             moveScript.isGrounded = true;
             moveScript.setOnSink(true);
+            moveScript.ImposeRecoveryTime();
         }
     }
 
