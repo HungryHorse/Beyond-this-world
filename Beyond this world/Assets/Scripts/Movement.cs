@@ -9,17 +9,23 @@ public class Movement : MonoBehaviour
     public float speed;
     public bool isGrounded;
     public float landDelay;
+    public Sprite fallingSprite;
+    public Sprite walkingSprite;
 
-    public bool onSink;
-    bool ableToMove;
-    float recoveryTime;
-    Rigidbody2D rb;
+    private Animator animator;
+    private bool onSink;
+    private bool ableToMove;
+    private float recoveryTime;
+    private Rigidbody2D rb;
+    private SpriteRenderer renderer;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
-	}
+        renderer = gameObject.GetComponent<SpriteRenderer>();
+        animator = gameObject.GetComponent<Animator>();
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -27,6 +33,24 @@ public class Movement : MonoBehaviour
         float modSpeed;
         modSpeed = speed;
         float x = Input.GetAxis("Horizontal");
+
+        if (x < 0)
+        {
+            renderer.flipX = true;
+        }
+        else if (x > 0)
+        {
+            renderer.flipX = false;
+        }
+
+        if(x < -0.1 || x > 0.1)
+        {
+            animator.SetBool("Moving", true);
+        }
+        else
+        {
+            animator.SetBool("Moving", false);
+        }
 
         Vector3 movement = new Vector3(x, 0, 0);
 
@@ -43,6 +67,18 @@ public class Movement : MonoBehaviour
         if(!isGrounded || onSink)
         {
             modSpeed /= 2.5f;
+        }
+
+        if (!isGrounded)
+        {
+            renderer.sprite = fallingSprite;
+            animator.enabled = false;
+        }
+        else
+        {
+            renderer.sprite = walkingSprite;
+            animator.enabled = true;
+            animator.SetBool("Jump", false);
         }
 
         if(recoveryTime > 0)
@@ -65,6 +101,7 @@ public class Movement : MonoBehaviour
         {
             Vector3 jump = new Vector3(0, 10, 0);
             rb.AddForce(jump * jumpForce);
+            animator.SetBool("Jump", true);
         }
 
 	}
