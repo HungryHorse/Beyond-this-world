@@ -4,13 +4,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour {
+    
+    public GameObject pauseMenu;
+    public GameObject player;
+    public GameObject[] levers;
 
     private bool paused = false;
-    public GameObject pauseMenu;
+    private Movement playerMove;
 
     private void Awake()
     {
         Time.timeScale = 1;
+        playerMove = player.GetComponent<Movement>();
     }
 
     void Update () {
@@ -28,12 +33,22 @@ public class Pause : MonoBehaviour {
             Time.timeScale = 1;
             paused = false;
             pauseMenu.SetActive(paused);
+            playerMove.enabled = true;
+            for(int i = 0; i < levers.Length; i++)
+            {
+                levers[i].GetComponent<Lever>().enabled = true;
+            }
         }
         else
         {
             Time.timeScale = 0;
             paused = true;
             pauseMenu.SetActive(paused);
+            playerMove.enabled = false;
+            for (int i = 0; i < levers.Length; i++)
+            {
+                levers[i].GetComponent<Lever>().enabled = false;
+            }
         }
     }
 

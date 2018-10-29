@@ -10,8 +10,7 @@ public class CameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
-        MoveTo = new Vector3(target.position.x, target.position.y + 1.3f, transform.position.z);
+        MoveTo = new Vector3(target.position.x, transform.position.y, transform.position.z);
         transform.position = Vector3.Lerp(gameObject.transform.position, MoveTo, 0.01f * smoothing);
-
     }
 }
