@@ -5,7 +5,11 @@ using UnityEngine;
 public class Lever : MonoBehaviour
 {
     public int leverNumber;
+    public Sprite on;
+    public Sprite off;
+    public MoveGameObject move;
 
+    private bool onOff = false;
     private bool active = false;
     
     private void OnTriggerStay2D(Collider2D collision)
@@ -18,7 +22,7 @@ public class Lever : MonoBehaviour
 
     private void Update()
     {
-        if(active && Input.GetKeyDown(KeyCode.E))
+        if(active && Input.GetKeyDown(KeyCode.E) )
         {
             Activate();
         }
@@ -26,11 +30,24 @@ public class Lever : MonoBehaviour
 
     void Activate()
     {
-        switch (leverNumber)
+        if (!onOff)
         {
-            case 1:
+            gameObject.GetComponent<SpriteRenderer>().sprite = on;
+            onOff = true;
 
-                break;
+
+            switch (leverNumber)
+            {
+                case 1:
+                    Debug.Log("case1");
+                    move.Move();
+                    break;
+            }
+        }
+        else
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = off;
+            onOff = false;
         }
 
     }
