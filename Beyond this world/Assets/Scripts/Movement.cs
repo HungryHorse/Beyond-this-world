@@ -66,7 +66,7 @@ public class Movement : MonoBehaviour
 
         if(!isGrounded || onSink)
         {
-            modSpeed /= 2.5f;
+            modSpeed /= 2f;
         }
 
         if (!isGrounded)

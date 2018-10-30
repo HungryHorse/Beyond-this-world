@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: floor middle sprite
+  m_Name: wall
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: bd14f0fbb6875d2459dd6347bc49cf07, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 61474347f712cb541ac0d36a839dd8a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
