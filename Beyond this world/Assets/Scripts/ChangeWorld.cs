@@ -8,8 +8,14 @@ public class ChangeWorld : MonoBehaviour {
     public GameObject ghostWorld;
     public float changeDelay;
 
+    private Animator animator;
     bool ableToSwitch;
     float switchRecovery;
+
+    private void Start()
+    {
+        animator = gameObject.GetComponent<Animator>();
+    }
 
 
     // Update is called once per frame
@@ -33,8 +39,10 @@ public class ChangeWorld : MonoBehaviour {
 
     void SwitchPlane()
     {
+        animator.enabled = true;
         realWorld.SetActive(!realWorld.activeInHierarchy);
         ghostWorld.SetActive(!ghostWorld.activeInHierarchy);
+        animator.SetBool("Ghost", !animator.GetBool("Ghost"));
         switchRecovery = changeDelay;
     }
 }

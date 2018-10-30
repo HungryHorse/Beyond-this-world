@@ -69,16 +69,20 @@ public class Movement : MonoBehaviour
             modSpeed /= 2f;
         }
 
-        if (!isGrounded)
+        if (!isGrounded && !animator.GetBool("Ghost"))
         {
             renderer.sprite = fallingSprite;
             animator.enabled = false;
         }
-        else
+        else if (!animator.GetBool("Ghost"))
         {
             renderer.sprite = walkingSprite;
             animator.enabled = true;
             animator.SetBool("Jump", false);
+        }
+        else
+        {
+            animator.enabled = true;
         }
 
         if(recoveryTime > 0)
