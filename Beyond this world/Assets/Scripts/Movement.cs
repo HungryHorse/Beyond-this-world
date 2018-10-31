@@ -16,7 +16,7 @@ public class Movement : MonoBehaviour
     private bool onSink;
     private bool ableToMove;
     private float recoveryTime;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     private SpriteRenderer renderer;
 
     // Use this for initialization
@@ -82,7 +82,9 @@ public class Movement : MonoBehaviour
         }
         else
         {
+            Debug.Log("Hitting else");
             animator.enabled = true;
+            animator.Play("GhostWalk");
         }
 
         if(recoveryTime > 0)
@@ -118,6 +120,5 @@ public class Movement : MonoBehaviour
     public void setOnSink(bool change)
     {
         onSink = change;
-        rb.velocity = new Vector2(0,0);
     }
 }

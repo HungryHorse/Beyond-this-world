@@ -20,6 +20,7 @@ public class isGrounded : MonoBehaviour {
         {
             moveScript.isGrounded = true;
             moveScript.setOnSink(true);
+            moveScript.rb.velocity = new Vector2(0, 0);
             moveScript.ImposeRecoveryTime();
         }
     }
@@ -36,6 +37,11 @@ public class isGrounded : MonoBehaviour {
         if (collision.gameObject.tag == "FloorSink")
         {
             moveScript.isGrounded = true;
+            moveScript.setOnSink(true);
+        }
+        else
+        {
+            moveScript.setOnSink(false);
         }
     }
 
@@ -49,6 +55,7 @@ public class isGrounded : MonoBehaviour {
         {
             moveScript.isGrounded = false;
             moveScript.setOnSink(false);
+            moveScript.rb.velocity = new Vector2(0, 0);
         }
     }
 }
