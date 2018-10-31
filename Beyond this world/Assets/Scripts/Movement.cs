@@ -66,7 +66,7 @@ public class Movement : MonoBehaviour
 
         if(!isGrounded || onSink)
         {
-            modSpeed /= 2f;
+            modSpeed /= 1.5f;
         }
 
         if (!isGrounded && !animator.GetBool("Ghost"))
@@ -82,7 +82,6 @@ public class Movement : MonoBehaviour
         }
         else
         {
-            Debug.Log("Hitting else");
             animator.enabled = true;
             animator.Play("GhostWalk");
         }

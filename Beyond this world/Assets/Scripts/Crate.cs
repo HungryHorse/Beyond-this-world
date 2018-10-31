@@ -12,6 +12,14 @@ public class Crate : MonoBehaviour {
         rb = gameObject.GetComponentInParent<Rigidbody2D>();
     }
 
+    private void Update()
+    {
+        if(transform.position.y <= -3)
+        {
+            Destroy(gameObject.transform.parent.gameObject);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "FloorSink")

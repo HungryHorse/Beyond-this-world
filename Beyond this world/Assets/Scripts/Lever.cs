@@ -8,6 +8,11 @@ public class Lever : MonoBehaviour
     public Sprite on;
     public Sprite off;
     public MoveGameObject move;
+    public MoveGameObject moveTwo;
+    public MoveGameObject ghostMoveOne;
+    public MoveGameObject ghostMoveTwo;
+    public SpawnCrate crate;
+    public GameObject spawnedCrate;
 
     private bool onOff = false;
     private bool active = false;
@@ -18,6 +23,13 @@ public class Lever : MonoBehaviour
         {
             active = true;
         } 
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            active = false;
+        }
     }
 
     private void Update()
@@ -39,8 +51,28 @@ public class Lever : MonoBehaviour
             switch (leverNumber)
             {
                 case 1:
-                    Debug.Log("case1");
-                    move.Move();
+                    if (move != null)
+                    {
+                        move.Move();
+                    }
+                    if (moveTwo != null)
+                    {
+                        moveTwo.Move();
+                    }
+                    if (ghostMoveOne != null)
+                    {
+                        ghostMoveOne.Move();
+                    }
+                    if (ghostMoveTwo != null)
+                    {
+                        ghostMoveTwo.Move();
+                    }
+                    break;
+                case 2:
+                    if (spawnedCrate == null)
+                    {
+                        crate.Spawn();
+                    }
                     break;
             }
         }
@@ -48,6 +80,28 @@ public class Lever : MonoBehaviour
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = off;
             onOff = false;
+
+            switch (leverNumber)
+            {
+                case 1:
+                    if (move != null)
+                    {
+                        move.MoveBack();
+                    }
+                    if (moveTwo != null)
+                    {
+                        moveTwo.MoveBack();
+                    }
+                    if (ghostMoveOne != null)
+                    {
+                        ghostMoveOne.MoveBack();
+                    }
+                    if (ghostMoveTwo != null)
+                    {
+                        ghostMoveTwo.MoveBack();
+                    }
+                    break;
+            }
         }
 
     }
