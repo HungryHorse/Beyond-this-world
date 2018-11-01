@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class ChangeWorld : MonoBehaviour {
 
+    public AudioSource toGhost;
+    public AudioSource toHuman;
     public GameObject realWorld;
     public GameObject ghostWorld;
     public float changeDelay;
+    public bool human = true;
 
     private Animator animator;
     bool ableToSwitch;
@@ -39,10 +42,19 @@ public class ChangeWorld : MonoBehaviour {
 
     void SwitchPlane()
     {
+        human = !human;
         animator.enabled = true;
         realWorld.SetActive(!realWorld.activeInHierarchy);
         ghostWorld.SetActive(!ghostWorld.activeInHierarchy);
         animator.SetBool("Ghost", !animator.GetBool("Ghost"));
         switchRecovery = changeDelay;
+        if (human)
+        {
+            toHuman.Play();
+        }
+        else
+        {
+            toGhost.Play();
+        }
     }
 }

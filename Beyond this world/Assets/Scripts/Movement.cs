@@ -11,6 +11,7 @@ public class Movement : MonoBehaviour
     public float landDelay;
     public Sprite fallingSprite;
     public Sprite walkingSprite;
+    public AudioSource jumpSound;
 
     private Animator animator;
     private bool onSink;
@@ -107,6 +108,7 @@ public class Movement : MonoBehaviour
             Vector3 jump = new Vector3(0, 10, 0);
             rb.AddForce(jump * jumpForce);
             animator.SetBool("Jump", true);
+            jumpSound.Play();
         }
 
 	}

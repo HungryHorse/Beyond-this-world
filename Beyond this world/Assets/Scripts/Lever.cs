@@ -53,20 +53,22 @@ public class Lever : MonoBehaviour
                 case 1:
                     if (move != null)
                     {
-                        move.Move();
+                        move.CreateMove();
                     }
                     if (moveTwo != null)
                     {
-                        moveTwo.Move();
+                        moveTwo.CreateMove();
                     }
                     if (ghostMoveOne != null)
                     {
-                        ghostMoveOne.Move();
+                        ghostMoveOne.CreateMove();
                     }
                     if (ghostMoveTwo != null)
                     {
-                        ghostMoveTwo.Move();
+                        ghostMoveTwo.CreateMove();
                     }
+                    gameObject.GetComponent<SpriteRenderer>().sprite = off;
+                    onOff = false;
                     break;
                 case 2:
                     if (spawnedCrate == null)

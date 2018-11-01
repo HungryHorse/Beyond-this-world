@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Win : MonoBehaviour
 {
-
+    public AudioSource winSound;
     public GameObject Player;
     private bool won;
 
@@ -23,7 +23,9 @@ public class Win : MonoBehaviour
         Player.GetComponent<Movement>().enabled = false;
         Player.GetComponent<ChangeWorld>().enabled = false;
         Player.GetComponent<Rigidbody2D>().gravityScale = 0;
-        Player.GetComponent<Animator>().Play("Win");
+        Player.GetComponent<Animator>().SetBool("Ghost", false);
+        Player.GetComponent<Animator>().Play("Fly");
+        winSound.Play();
     }
 
     private void Update()
@@ -33,7 +35,7 @@ public class Win : MonoBehaviour
             Player.transform.position = Vector3.Lerp(Player.transform.position, gameObject.transform.position, 0.01f);
             Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, gameObject.transform.position, 0.01f);
         }
-        if (Player.transform.position.y >= 0.8)
+        if (Player.transform.position.y >= 0.8 && Player.transform.position.x >= 52)
         {
             SceneManager.LoadScene(2);
         }

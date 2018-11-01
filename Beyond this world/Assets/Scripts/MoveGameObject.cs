@@ -7,9 +7,13 @@ public class MoveGameObject : MonoBehaviour
     public float smoothing;
     public Transform target;
     public float startX;
+    public AudioSource sliding;
+    public bool isReal;
 
     private bool doMove;
     private bool moveBack;
+    private bool didMove = false;
+    private bool didMoveBack = true;
 
     private void Update()
     {
@@ -25,10 +29,24 @@ public class MoveGameObject : MonoBehaviour
         if(Vector3.Distance(transform.position, target.position) < 0.5f)
         {
             doMove = false;
+            didMove = true;
         }
         if (Vector3.Distance(transform.position, target.position) > 4f)
         {
             moveBack = false;
+            didMoveBack = true;
+        }
+    }
+
+    public void CreateMove()
+    {
+        if (didMove)
+        {
+            MoveBack();
+        }
+        if (didMoveBack)
+        {
+            Move();
         }
     }
 
@@ -37,6 +55,11 @@ public class MoveGameObject : MonoBehaviour
         if (!moveBack)
         {
             doMove = true;
+            didMoveBack = false;
+            if (isReal)
+            {
+                sliding.Play();
+            }
         }
     }
     public void MoveBack()
@@ -44,6 +67,11 @@ public class MoveGameObject : MonoBehaviour
         if (!doMove)
         {
             moveBack = true;
+            didMove = false;
+            if (isReal)
+            {
+                sliding.Play();
+            }
         }
     }
 }
