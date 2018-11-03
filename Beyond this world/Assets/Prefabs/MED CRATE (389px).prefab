@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 212102305269933488}
   - component: {fileID: 61209952563273260}
   - component: {fileID: 50386110407714032}
+  - component: {fileID: 114428362310333402}
   m_Layer: 0
   m_Name: MED CRATE (389px)
   m_TagString: Floor
@@ -143,6 +144,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 0.05}
   m_EdgeRadius: 0
+--- !u!114 &114428362310333402
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1244475273111560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db9289635b9895b4ca19bf51fe25db91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crateSound: {fileID: 0}
 --- !u!114 &114949070276742630
 MonoBehaviour:
   m_ObjectHideFlags: 1

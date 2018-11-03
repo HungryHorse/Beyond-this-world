@@ -18,7 +18,7 @@ public class Movement : MonoBehaviour
     private bool ableToMove;
     private float recoveryTime;
     public Rigidbody2D rb;
-    private SpriteRenderer renderer;
+    public SpriteRenderer renderer;
 
     // Use this for initialization
     void Start ()
@@ -103,7 +103,7 @@ public class Movement : MonoBehaviour
         }
         
 
-        if (Input.GetButtonDown("Jump") && isGrounded && ableToMove)
+        if (Input.GetButtonDown("Jump") && isGrounded && ableToMove && transform.position.x < 50.5f)
         {
             Vector3 jump = new Vector3(0, 10, 0);
             rb.AddForce(jump * jumpForce);

@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 61233848588371222}
   - component: {fileID: 50545707724733830}
   - component: {fileID: 212431921165958006}
+  - component: {fileID: 114438488588181504}
   m_Layer: 0
   m_Name: Crate
   m_TagString: Floor
@@ -143,6 +144,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4, y: 0.46}
   m_EdgeRadius: 0
+--- !u!114 &114438488588181504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1695143680365090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db9289635b9895b4ca19bf51fe25db91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crateSound: {fileID: 0}
 --- !u!114 &114813343722894212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -187,7 +200,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -853203017
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f7b1e2f32f77827459a83e62817d5a84, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
